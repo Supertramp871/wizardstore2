@@ -12,15 +12,14 @@ def order_create(request):
         if form.is_valid():
             order = form.save()
             for item in cart:
+                discounted_price = item['product'].sell_price()
                 OrderItem.objects.create(order=order,
                                          product=item['product'],
                                          price=item['price'],
                                          quantity=item['quantity'])
             cart.clear()
-            return render(request,
-                          'orders/order/created.html',
-                          {'order':order,
-                          'form':form})
+            request.session['order_id'] = order.id
+            return redirect(reverse('payment:process'))
     else:
         form = OrderCreateForm(request=request)
     return render(request, 
