@@ -1,0 +1,56 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+  <section class="home d-flex flex-column">
+    <div class="home-title d-flex flex-column align-items-center">
+      <a href="/shop" class = "home-btn m-4">ALL PRODUCTS</a>
+    </div>
+    <div class="home-recomendations">
+      <div class="rec-title mb-4">
+        <h3><span>Popular Accessories</span></h3>
+      </div>
+    </div>
+    <div class="home-cards d-flex gap-4">
+      {% for product in products %}
+        <a href="{{ product.get_absolute_url }}" class = "home-card d-flex flex-column align-items-center text-center">
+          <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/noimage.jpg' %}{% endif %}" class = "card-img" alt="">
+          <h5 class = "title-card">{{ product.name }}</h5>
+          {% if product.discount %}
+            <div class="cart-discount d-flex gap-2">
+              <p class="line">{{ product.price }}</p>
+              <p>{{ product.sell_price }}</p>
+            </div>
+            {% else %}
+              <p class="price">{{ product.price }}</p>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+  <img src="{% static 'img/logo.png' %}" class = "logogothic" alt="">
+
+
+  <footer class="footer" >
+    <div class="footer-container d-flex">
+      <nav class="footer-nav pt-2">
+        <ul class="footer-list d-flex align-items-center">
+          <li class="footer-item m-3">
+            <a href="https://t.me/bratheri4" class="footer-link">Telegram</a>
+          </li>
+          <li class="footer-item m-3">
+            <a href="https://youtu.be/rhvF2_JkDhQ?t=13" class="footer-link">Instagram</a>
+          </li>
+          <li class="footer-item m-3">
+            <a href="https://vk.com/brater" class="footer-link">Vk</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="footer-copy">
+        <p class="footer-copy-text m-3">© 2024 CERSUS. All rights reserved, enchanted, and protected by ancient runes. All stuffs are certified by the Council of Arcane Artifacts. Unauthorized spellcasting with our products may result in unpredictable charms, curses, or spontaneous dragon appearances. Proceed with caution and wonder.</p>
+      </div>
+    </div>
+  </footer>
+{% endblock content %}
