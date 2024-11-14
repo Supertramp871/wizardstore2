@@ -81,12 +81,12 @@ WSGI_APPLICATION = "wizardstore.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "wizardstore",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "wizardstore2",
+        "USER": "root",
+        "PASSWORD": "3632",
         "HOST": "localhost",
-        "PORT": "5432",
+        "PORT": "3306",
     }
 }
 
