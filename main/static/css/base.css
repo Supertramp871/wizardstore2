@@ -89,6 +89,10 @@ h5 {
   margin-bottom: 50px;
 }
 
+.home-cards{
+    display: flex;
+}
+
 .home-card {
   width: 200px;
   height: 325px;
@@ -157,6 +161,7 @@ h5 {
 }
 
 .footer-container {
+  display: flex;
   box-sizing: border-box;
   max-width: 1400px;
   margin: 0 auto;
@@ -747,4 +752,22 @@ h5 {
 
 .rounded {
     margin-top: 80px;
+}
+
+
+
+
+@media (max-width: 768px) {
+      
+    .container {
+        max-width: 100%;
+    }
+
+    .home-cards {
+        display: grid;
+    }
+
+    .footer-container{
+        display: grid;
+    }
 }

@@ -13,7 +13,7 @@
         <h2><span>Popular Accessories</span></h2>
       </div>
     </div>
-    <div class="home-cards d-flex gap-4">
+    <div class="home-cards gap-4">
       {% for product in products %}
         <a href="{{ product.get_absolute_url }}" class = "home-card d-flex flex-column align-items-center text-center">
           <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/noimage.jpg' %}{% endif %}" class = "card-img" alt="">
@@ -34,7 +34,7 @@
 
 
   <footer class="footer" >
-    <div class="footer-container d-flex">
+    <div class="footer-container">
       <nav class="footer-nav pt-2">
         <ul class="footer-list d-flex align-items-center">
           <li class="footer-item m-3">

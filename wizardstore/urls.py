@@ -15,19 +15,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.contrib import admin
-from django.urls import path, include
-from django.conf import settings
-from django.conf.urls.static import static
+from django.contrib import admin  # Импорт административной панели
+from django.urls import path, include  # Импорт функций для определения URL-маршрутов
+from django.conf import settings  # Импорт настроек проекта
+from django.conf.urls.static import static  # Для работы со статическими и медиа-файлами
 
+# Основной список маршрутов (urlpatterns)
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("cart/", include('cart.urls', namespace='cart')),
-    path("user/", include('users.urls', namespace='user')),
-    path('orders/', include('orders.urls', namespace='orders')),
-    path('payment/', include('payment.urls', namespace='payment')),
-    path('', include('main.urls', namespace='main')),
+    path("admin/", admin.site.urls),  # URL для административной панели
+    path("cart/", include('cart.urls', namespace='cart')),  # Подключение маршрутов приложения "cart"
+    path("user/", include('users.urls', namespace='user')),  # Подключение маршрутов приложения "users"
+    path('orders/', include('orders.urls', namespace='orders')),  # Подключение маршрутов приложения "orders"
+    path('payment/', include('payment.urls', namespace='payment')),  # Подключение маршрутов приложения "payment"
+    path('', include('main.urls', namespace='main')),  # Основная страница приложения "main"
 ]
 
+# Дополнение маршрутов для обработки медиа-файлов в режиме DEBUG
 if settings.DEBUG:
-  urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # MEDIA_URL — URL для медиа-файлов
+    # MEDIA_ROOT — путь к директории, где хранятся медиа-файлы
